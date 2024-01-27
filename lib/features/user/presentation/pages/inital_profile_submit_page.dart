@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_new_ui/features/app/const/consts.dart';
 import 'package:whatsapp_new_ui/features/app/global/widgets/profile_widget.dart';
+import 'package:whatsapp_new_ui/features/app/home/home_page.dart';
 import 'package:whatsapp_new_ui/features/app/theme/style.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -99,6 +100,7 @@ class _InitialProfileSubmitPageState extends State<InitialProfileSubmitPage> {
   }
 
   void submitProfileInfo() {
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const HomePage(),), (route) => false);
 
   }
 
