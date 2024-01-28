@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_new_ui/features/app/const/consts.dart';
 import 'package:whatsapp_new_ui/features/app/home/contacts_page.dart';
 import 'package:whatsapp_new_ui/features/app/theme/style.dart';
 import 'package:whatsapp_new_ui/features/call/presentation/pages/calls_history_page.dart';
@@ -58,28 +59,12 @@ class _HomePageState extends State<HomePage>
               const SizedBox(
                 width: 10,
               ),
-              // PopupMenuButton<String>(
-              //   icon: const Icon(
-              //     Icons.more_vert,
-              //     color: greyColor,
-              //     size: 28,
-              //   ),
-              //   color: appBarColor,
-              //   iconSize: 28,
-              //   onSelected: (value) {},
-              //   itemBuilder: (context) =>
-              //   <PopupMenuEntry<String>>[
-              //     PopupMenuItem<String>(
-              //       value: "Settings",
-              //       child: GestureDetector(
-              //           onTap: () {
-              //             Navigator.pushNamed(
-              //                 context, PageConst.settingsPage, arguments: widget.uid);
-              //           },
-              //           child: const Text('Settings')),
-              //     ),
-              //   ],
-              // ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, PageConst.settingsPage);
+                },
+                child: const Icon(Icons.settings, color: greyColor, size: 28),
+              ),
             ],
           ),
         ],
@@ -130,12 +115,7 @@ class _HomePageState extends State<HomePage>
           return FloatingActionButton(
             backgroundColor: tabColor,
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ContactsPage(),
-                ),
-              );
+              Navigator.pushNamed(context, PageConst.contactUsersPage);
             },
             child: const Icon(
               Icons.message,
@@ -159,6 +139,7 @@ class _HomePageState extends State<HomePage>
           return FloatingActionButton(
             backgroundColor: tabColor,
             onPressed: () {
+              Navigator.pushNamed(context, PageConst.callContactsPage);
             },
             child: const Icon(
               Icons.add_call,

@@ -11,12 +11,10 @@ class OtpPage extends StatefulWidget {
 }
 
 class _OtpPageState extends State<OtpPage> {
-
   final TextEditingController _otpController = TextEditingController();
 
   @override
   void dispose() {
-    _otpController.dispose();
     super.dispose();
   }
 
@@ -60,7 +58,6 @@ class _OtpPageState extends State<OtpPage> {
                 ],
               ),
             ),
-
             GestureDetector(
               onTap: _submitSmsCode,
               child: Container(
@@ -95,10 +92,8 @@ class _OtpPageState extends State<OtpPage> {
         children: <Widget>[
           PinCodeFields(
             controller: _otpController,
-
             length: 6,
             activeBorderColor: tabColor,
-
             onComplete: (String pinCode) {},
           ),
           const Text("Enter your 6 digit code")
@@ -107,8 +102,12 @@ class _OtpPageState extends State<OtpPage> {
     );
   }
 
-  void _submitSmsCode(){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const InitialProfileSubmitPage(),),);
-
+  void _submitSmsCode() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const InitialProfileSubmitPage(),
+      ),
+    );
   }
 }
