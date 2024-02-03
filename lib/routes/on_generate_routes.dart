@@ -5,6 +5,8 @@ import 'package:whatsapp_new_ui/features/app/settings/settings_page.dart';
 import 'package:whatsapp_new_ui/features/call/presentation/pages/call_contacts_page.dart';
 import 'package:whatsapp_new_ui/features/chat/presentation/pages/single_chat_page.dart';
 import 'package:whatsapp_new_ui/features/status/presentation/pages/my_status_page.dart';
+import 'package:whatsapp_new_ui/features/user/domain/entities/user_entity.dart';
+import 'package:whatsapp_new_ui/features/user/presentation/pages/edit_profile_page.dart';
 
 class OnGenerateRoute {
 
@@ -20,8 +22,18 @@ class OnGenerateRoute {
 
         }
       case PageConst.settingsPage: {
-          return materialPageBuilder( const SettingsPage());
-
+        if(args is String) {
+          return materialPageBuilder( SettingsPage(uid: args));
+        } else {
+          return materialPageBuilder( const ErrorPage());
+        }
+      }
+      case PageConst.editProfilePage: {
+        if(args is UserEntity) {
+          return materialPageBuilder( EditProfilePage(currentUser: args));
+        } else {
+          return materialPageBuilder( const ErrorPage());
+        }
       }
       case PageConst.callContactsPage: {
         return materialPageBuilder(const CallContactsPage());

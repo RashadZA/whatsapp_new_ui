@@ -45,7 +45,7 @@ class _MyStatusPageState extends State<MyStatusPage> {
                 ),
 
                 GestureDetector(onTap: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const HomePage()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  HomePage(uid: "",)));
 
                 },
                   child: Icon(Icons.delete, color: greyColor.withOpacity(.5),),),

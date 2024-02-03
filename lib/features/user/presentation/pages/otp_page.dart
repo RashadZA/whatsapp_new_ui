@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whatsapp_new_ui/features/app/theme/style.dart';
 import 'package:flutter_pin_code_fields/flutter_pin_code_fields.dart';
+import 'package:whatsapp_new_ui/features/user/presentation/cubit/credential/credential_cubit.dart';
 import 'package:whatsapp_new_ui/features/user/presentation/pages/inital_profile_submit_page.dart';
 
 class OtpPage extends StatefulWidget {
@@ -13,10 +15,6 @@ class OtpPage extends StatefulWidget {
 class _OtpPageState extends State<OtpPage> {
   final TextEditingController _otpController = TextEditingController();
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,11 +101,18 @@ class _OtpPageState extends State<OtpPage> {
   }
 
   void _submitSmsCode() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const InitialProfileSubmitPage(),
-      ),
-    );
+    debugPrint("otpCode ${_otpController.text}");
+    if (_otpController.text.isNotEmpty){
+      BlocProvider.of<CredentialCubit>(context)
+          .submitSmsCode(smsCode: _otpController.text);
+    }
   }
+
+
+  @override
+  void dispose() {
+    _otpController.dispose();
+    super.dispose();
+  }
+
 }

@@ -7,7 +7,8 @@ import 'package:whatsapp_new_ui/features/chat/presentation/pages/chat_page.dart'
 import 'package:whatsapp_new_ui/features/status/presentation/pages/status_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String uid;
+  const HomePage({super.key, required this.uid});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -61,7 +62,7 @@ class _HomePageState extends State<HomePage>
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, PageConst.settingsPage);
+                  Navigator.pushNamed(context, PageConst.settingsPage,arguments: widget.uid);
                 },
                 child: const Icon(Icons.settings, color: greyColor, size: 28),
               ),
