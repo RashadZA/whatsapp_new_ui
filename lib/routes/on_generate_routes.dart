@@ -18,8 +18,13 @@ class OnGenerateRoute {
     switch (name) {
       case PageConst.contactUsersPage:
         {
-            return materialPageBuilder(const ContactsPage());
+          // if(args is String) {
+            return materialPageBuilder(ContactsPage());
 
+          // } else {
+          //   return materialPageBuilder( const ErrorPage());
+          //
+          // }
         }
       case PageConst.settingsPage: {
         if(args is String) {
